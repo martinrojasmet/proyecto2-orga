@@ -1,26 +1,34 @@
 class Game:
 
     def __init__(self, id, title, price)
-    self.id = id
-    self.title = title
-    self.price = price
-    self.available = True
+        self.id = id
+        self.title = title
+        self.price = price
+        self.available = True
 
+    def get_id(self):
+        return self.id
     
-    def availability(self):
+    def get_available(self):
         return self.available
 
-    def title(self):
+    def get_title(self):
         return self.title
 
-    def price(self):
+    def get_price(self):
         return self.price
 
-    def set_is_available(self):
-        self.availability() = True
+    def set_available(self):
+        self.get_available() = True
 
-    def set_is_not_available(self):
-        self.availability() = False
+    def set_not_available(self):
+        self.get_available() = False
 
     def change_price(self, price):
-        self.price() = price
+        self.get_price() = price
+
+    def print_availability(self):
+        if self.get_available():
+            print("En stock")
+        else:
+            print("Alquilado")

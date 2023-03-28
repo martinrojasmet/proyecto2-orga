@@ -1,10 +1,14 @@
+import re
+
 class main:
 
-    def __init__(self):
-        self._init()
+    def validate_game_att(self, game):
+        valid_game = True
+        if not re.match(r"^[a-zA-Z]{4}[0-9]{2}$", game.get_id()):
+            valid_game = False
+        if  game.get_title().len() > 10:
+            valid_game = False
+        if (game.get_price() > 999) and (not game.get_price().isnumeric()):
+            valid_game = False
 
-    def validate_game_att(self, id, title, price):
-        if id == "" or title == "" or price == "":
-            return False
-        else:
-            return True
+main()
