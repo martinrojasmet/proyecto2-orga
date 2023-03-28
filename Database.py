@@ -95,7 +95,52 @@ class Database:
     def get_game_by_title(self, game_title):
         address = self.address_game_by_title(game_title)
         result = None
-        for i in range(0,len(self.get_matrix()[address])):
-            if self.get_matrix()[address][i].get_title() == game_title:
-                result = self.get_matrix()[address][i]
+        if address == 10:
+            print("El juego no existe")
+        else:
+            for i in range(0,len(self.get_matrix()[address])):
+                if self.get_matrix()[address][i].get_title() == game_title:
+                    result = self.get_matrix()[address][i]
         return result
+
+    def address_game_by_id(self, game_id):
+        result = 10
+        address = self.hash_function(game_id)
+        for i in range(0,len(self.get_matrix()[address])):
+            if self.get_matrix()[address][i].get_id() == game_id:
+                result = address
+        return result
+
+    def get_game_by_id(self, game_id):
+        address = self.address_game_by_id(game_id)
+        result = None
+        if address == 10:
+            print("El juego no existe")
+        else:
+            for i in range(0,len(self.get_matrix()[address])):
+                if self.get_matrix()[address][i].get_id() == game_id:
+                    result = self.get_matrix()[address][i]
+        return result
+
+    def return_game(self, game_id):
+        game = self.get_game_by_id(game_id)
+        if game != None:
+            game.set_available()
+        else:
+            print("El juego no existe")
+
+    def rent_game(self, game_id):
+        game = self.get_game_by_id(game_id)
+        if game != None:
+            game.set_not_available()
+        else:
+            print("El juego no existe")
+
+    def delete_game(self, game_id):
+        address = self.address_game_by_id(game_id)
+        if address == 10:
+            print("El juego no existe")
+        else:
+            for i in range(0,len(self.get_matrix()[address])):
+                if self.get_matrix()[address][i].get_id() == game_id:
+                    self.get_matrix()[address].pop(i)
