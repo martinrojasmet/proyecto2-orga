@@ -10,5 +10,6 @@ class main:
             valid_game = False
         if (game.get_price() > 999) and (not game.get_price().isnumeric()):
             valid_game = False
+        return valid_game
 
 main()
