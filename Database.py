@@ -15,24 +15,18 @@ class Database:
                        []]
         self.index_table = []
 
-    def get_matrix(self):
-        return self.matrix
-
-    def get_index_table(self):
-        return self.index_table
-
     def add_game(self, game):
 
-        address = hash_function(game.get_id())
+        address = hash_function(game.id)
         register_full = register_is_full(address)
-        game_in_table = game_in_table(game.get_id(), address)
-        game_in_index_table = game_in_index_table(game.get_title())
+        game_in_table = game_in_table(game.id, address)
+        game_in_index_table = game_in_index_table(game.title)
 
         if not register_full:
             if not game_in:
                 if not game_in_index_table:
-                    self.get_matrix[address].append(game)
-                    self.get_index_table.append([game.get_title(), address])
+                    self.matrix[address].append(game)
+                    self.index_table.append([game.title, address])
                 else:
                     print("El juego ya existe (titulo)")
             else:
@@ -42,8 +36,8 @@ class Database:
             if new_address != 10:
                 if not game_in:
                     if not game_in_index_table:
-                        self.get_matrix()[new_address].append(game)
-                        self.get_index_table().append([game.get_title(),new_address])
+                        self.matrix[new_address].append(game)
+                        self.index_table.append([game.title,new_address])
                     else:
                         print("El juego ya existe (titulo)")
                 else:
@@ -60,36 +54,36 @@ class Database:
 
     def game_in_table(self, game_id, address):
         result = False
-        for i in range(0,len(self.get_matrix()[address]))):
-            if self.get_matrix()[address][i].get_id() == game_id:
+        for i in range(0,len(self.matrix[address])):
+            if self.matrix[address][i].id == game_id:
                 result = True
         return result
 
     def register_is_full(self, address):
         result = False
-        if len(self.get_matrix()[address]) == 3:
+        if len(self.matrix[address]) == 3:
             result = True
         return result
 
     def game_in_index_table(self, game_title):
         result = False
-        for i in range(0,len(self.get_index_table())):
-            if self.get_index_table()[i][0] == game_title:
+        for i in range(0,len(self.index_table)):
+            if self.index_table[i][0] == game_title:
                 result = True
         return result
 
     def check_empty_register(self, address):
         result = 10
         for i in range(3,10):
-            if len(self.get_matrix()[i]) < 3:
+            if len(self.matrix[i]) < 3:
                 result = i
         return result
 
     def address_game_by_title(self, game_title):
         result = 10
-        for i in range(0,len(self.get_index_table())):
-            if self.get_index_table()[i][0] == game_title:
-                result = self.get_index_table()[i][1]
+        for i in range(0,len(self.index_table)):
+            if self.index_table[i][0] == game_title:
+                result = self.index_table[i][1]
         return result
 
     def get_game_by_title(self, game_title):
@@ -98,16 +92,16 @@ class Database:
         if address == 10:
             print("El juego no existe")
         else:
-            for i in range(0,len(self.get_matrix()[address])):
-                if self.get_matrix()[address][i].get_title() == game_title:
-                    result = self.get_matrix()[address][i]
+            for i in range(0,len(self.matrix[address])):
+                if self.matrix[address][i].title == game_title:
+                    result = self.matrix[address][i]
         return result
 
     def address_game_by_id(self, game_id):
         result = 10
         address = self.hash_function(game_id)
-        for i in range(0,len(self.get_matrix()[address])):
-            if self.get_matrix()[address][i].get_id() == game_id:
+        for i in range(0,len(self.matrix[address])):
+            if self.matrix[address][i].id == game_id:
                 result = address
         return result
 
@@ -117,9 +111,9 @@ class Database:
         if address == 10:
             print("El juego no existe")
         else:
-            for i in range(0,len(self.get_matrix()[address])):
-                if self.get_matrix()[address][i].get_id() == game_id:
-                    result = self.get_matrix()[address][i]
+            for i in range(0,len(self.matrix[address])):
+                if self.matrix[address][i].id == game_id:
+                    result = self.matrix[address][i]
         return result
 
     def return_game(self, game_id):
@@ -141,6 +135,6 @@ class Database:
         if address == 10:
             print("El juego no existe")
         else:
-            for i in range(0,len(self.get_matrix()[address])):
-                if self.get_matrix()[address][i].get_id() == game_id:
-                    self.get_matrix()[address].pop(i)
+            for i in range(0,len(self.matrix[address])):
+                if self.matrix[address][i].id == game_id:
+                    self.matrix[address].pop(i)

@@ -12,4 +12,6 @@ class main:
             valid_game = False
         return valid_game
 
+    print("juandiego trabaja chico")
+    
 main()
