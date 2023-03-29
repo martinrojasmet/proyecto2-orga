@@ -20,3 +20,11 @@ class Game:
             print("En stock")
         else:
             print("Alquilado")
+    
+    def print_attributes(self):
+        print("Atributos del juego: ")
+        print("ID: ", self.id)
+        print("Título: ", self.title)
+        print("Precio: ", self.price)
+        print("Disponibilidad: ", self.print_availability())
+        print("")
