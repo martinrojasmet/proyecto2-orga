@@ -278,3 +278,9 @@ class Database:
         if found:
             result = self.index_table[i][1]
         return result
+
+    def load_db_json(self):
+        with open("db.json", "r") as file:
+            dict = json.load(file)
+            self.matrix = dict["matrix"]
+            self.index_table = dict["index_table"]

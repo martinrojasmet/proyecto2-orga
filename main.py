@@ -1,15 +1,19 @@
 from Database import Database
 from Game import Game
 import os
+import re
 class main:
 
     def validate_game_att(self, game):
         valid_game = True
-        if not re.match(r"^[a-zA-Z]{4}[0-9]{2}$", game.get_id()):
+        if not (re.match(r"^[a-zA-Z]{4}[0-9]{2}$", game.id) != game.id):
+            print("El id no es válido")
             valid_game = False
-        if  game.get_title().len() > 10:
+        if  len(game.title) > 10:
+            print("El título no es válido")
             valid_game = False
-        if (game.get_price() > 999) and (not game.get_price().isnumeric()):
+        if (game.price > 999) and (not isinstance(game.price, int)):
+            print("El precio no es válido")
             valid_game = False
         return valid_game
 
@@ -40,11 +44,10 @@ class main:
                 game_id = input("Ingrese el id del juego: ")
                 game_title = input("Ingrese el título del juego: ")
                 game_price = input("Ingrese el precio del juego: ")
+                game_price = int(game_price)
                 new_game = Game(game_id, game_title, game_price)
                 if self.validate_game_att(new_game):
                     database.add_game(new_game)
-                else:
-                    print("El juego no es válido")
 
             elif option == "2":
                 game_title = input("Ingrese el título del juego: ")
