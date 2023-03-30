@@ -21,6 +21,14 @@ class Game:
         else:
             print("Alquilado")
     
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "price": self.price,
+            "available": self.available
+        }
+    
     def print_attributes(self):
         print("Atributos del juego: ")
         print("Modelo: ", self.id)

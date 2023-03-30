@@ -1,4 +1,5 @@
 import json
+from Game import Game
 class Database:
 
     def __init__(self):
@@ -265,6 +266,9 @@ class Database:
             print("El juego no existe")
 
     def save_db_json(self):
+        for i in range(0,len(self.matrix)):
+            for j in range(0,len(self.matrix[i])):
+                self.matrix[i][j] = self.matrix[i][j].to_dict()
         dict = {"matrix": self.matrix, "index_table": self.index_table}
         with open("db.json", "w") as file:
             json.dump(dict, file)
@@ -282,6 +286,9 @@ class Database:
     def load_db_json(self):
         with open("db.json", "r") as file:
             dict = json.load(file)
+            for i in range(0,len(dict["matrix"])):
+                for j in range(0,len(dict["matrix"][i])):
+                    dict["matrix"][i][j] = Game(dict["matrix"][i][j]["id"], dict["matrix"][i][j]["title"], dict["matrix"][i][j]["available"])
             self.matrix = dict["matrix"]
             self.index_table = dict["index_table"]
 
