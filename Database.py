@@ -309,7 +309,7 @@ class Database:
             dict = json.load(file)
             for i in range(0,len(dict["matrix"])):
                 for j in range(0,len(dict["matrix"][i])):
-                    dict["matrix"][i][j] = Game(dict["matrix"][i][j]["id"], dict["matrix"][i][j]["title"],dict["matrix"][i][j]["title"], dict["matrix"][i][j]["available"])
+                    dict["matrix"][i][j] = Game(dict["matrix"][i][j]["id"], dict["matrix"][i][j]["title"],dict["matrix"][i][j]["price"], dict["matrix"][i][j]["available"])
             self.matrix = dict["matrix"]
             self.index_table = dict["index_table"]
 
