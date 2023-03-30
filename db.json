@@ -4,19 +4,19 @@
             {
                 "id": "MAGICC12",
                 "title": "Magic",
-                "price": 65,
+                "price": true,
                 "available": true
             },
             {
                 "id": "DIABLO89",
                 "title": "Diablo",
-                "price": 23,
+                "price": true,
                 "available": true
             },
             {
                 "id": "FIFAAA12",
                 "title": "Fifa",
-                "price": 12,
+                "price": true,
                 "available": true
             }
         ],
@@ -24,19 +24,19 @@
             {
                 "id": "MARIOK45",
                 "title": "Mario Kart",
-                "price": 67,
+                "price": true,
                 "available": true
             },
             {
                 "id": "YUGIOH66",
                 "title": "YugiOh",
-                "price": 23,
+                "price": true,
                 "available": true
             },
             {
                 "id": "TITANS56",
                 "title": "Titans",
-                "price": 65,
+                "price": true,
                 "available": true
             }
         ],
@@ -44,23 +44,36 @@
             {
                 "id": "FROGGR33",
                 "title": "frogger",
-                "price": 60,
+                "price": true,
                 "available": true
             },
             {
                 "id": "SPACEI27",
                 "title": "Spaceinv",
-                "price": 89,
+                "price": true,
                 "available": true
             },
             {
                 "id": "MARIOB67",
                 "title": "MarioBros",
-                "price": 64,
+                "price": true,
                 "available": true
             }
         ],
-        [],
+        [
+            {
+                "id": "TIGERS65",
+                "title": "Tiger",
+                "price": 45,
+                "available": true
+            },
+            {
+                "id": "FROSTY65",
+                "title": "FrostGame",
+                "price": 45,
+                "available": true
+            }
+        ],
         [],
         [],
         [],
@@ -68,19 +81,19 @@
             {
                 "id": "SONICC02",
                 "title": "Sonic",
-                "price": 48,
+                "price": true,
                 "available": true
             },
             {
                 "id": "DOMINO34",
                 "title": "Domino",
-                "price": 8,
+                "price": true,
                 "available": true
             },
             {
                 "id": "DRAGON45",
                 "title": "DragnQuest",
-                "price": 76,
+                "price": true,
                 "available": true
             }
         ],
@@ -88,13 +101,13 @@
             {
                 "id": "SOLITA40",
                 "title": "Solitario",
-                "price": 9,
+                "price": true,
                 "available": true
             },
             {
                 "id": "DOOMMM64",
                 "title": "Doom",
-                "price": 89,
+                "price": true,
                 "available": true
             }
         ]
@@ -155,6 +168,14 @@
         [
             "Fifa",
             "FIFAAA12"
+        ],
+        [
+            "Tiger",
+            "TIGERS65"
+        ],
+        [
+            "FrostGame",
+            "FROSTY65"
         ]
     ]
 }
