@@ -26,7 +26,7 @@ class Database:
             if not game_in_group:
                 if not game_in_index_table:
                     self.matrix[address].append(game)
-                    self.index_table.append([game.title, game.id])
+                    self.binary_insert([game.title, game.id])
                     print("""
                     Juego agregado con éxito
                     """)
@@ -58,6 +58,39 @@ class Database:
             key += ord(c)
         key = key % 3
         return key
+    
+    def binary_search_table(self, name):
+        found = False
+        low = 0
+        high = len(self.index_table) - 1
+        while low <= high and not found:
+            mid = (low + high) // 2
+            if self.index_table[mid][0] == name:
+                result = self.index_table[mid][1]
+                found = True
+                break
+            elif self.index_table[mid][0] < name:
+                low = mid + 1
+            else:
+                high = mid - 1
+        return result
+    
+    def binary_insert(self, array):
+        found = False
+        low = 0
+        high = len(self.index_table) - 1
+        while low <= high and not found:
+            mid = (low + high) // 2
+            if self.index_table[mid][0] > array[0]:
+                high = mid - 1
+            elif self.index_table[mid][0] < array[0]:
+                low = mid + 1
+            elif self.index_table[mid][0] == array[0]:
+                found = True
+                break
+            else:
+                self.index_table.insert(mid, array)
+        if found: print("El juego ya existe (titulo)")
 
     def first_table_full(self, address): #funcionando bien
         result = False

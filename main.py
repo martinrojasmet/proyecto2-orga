@@ -85,7 +85,7 @@ class main:
             
             elif option == "6":
                 game_title = input("Ingrese el título del juego: ")
-                game = database.get_game_by_title(game_title)
+                game = database.get_game_by_id(database.binary_search_table(game_title))
                 if game == None:
                     print("No se encontró el juego")
                 else:
