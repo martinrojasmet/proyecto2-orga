@@ -1,10 +1,10 @@
 class Game:
 
-    def __init__(self, id, title, price):
+    def __init__(self, id, title, price, available = True):
         self.id = id
         self.title = title
         self.price = price
-        self.available = True
+        self.available = available
 
     def set_available(self):
         self.available = True
