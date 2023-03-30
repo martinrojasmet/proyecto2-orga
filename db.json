@@ -2,66 +2,6 @@
     "matrix": [
         [
             {
-                "id": "pppppp66",
-                "title": "p",
-                "price": 6,
-                "available": true
-            },
-            {
-                "id": "pppppp99",
-                "title": "p9",
-                "price": 5,
-                "available": true
-            },
-            {
-                "id": "pppppp00",
-                "title": "p0",
-                "price": 8,
-                "available": true
-            }
-        ],
-        [
-            {
-                "id": "asdasd34",
-                "title": "3",
-                "price": 56,
-                "available": false
-            },
-            {
-                "id": "averdc77",
-                "title": "hu",
-                "price": 56,
-                "available": true
-            },
-            {
-                "id": "pppppp22",
-                "title": "p2",
-                "price": 7,
-                "available": true
-            }
-        ],
-        [
-            {
-                "id": "pppppp11",
-                "title": "pp",
-                "price": 5,
-                "available": true
-            },
-            {
-                "id": "FROGGR33",
-                "title": "frogger",
-                "price": 60,
-                "available": true
-            },
-            {
-                "id": "SPACEI27",
-                "title": "Spaceinv",
-                "price": 89,
-                "available": true
-            }
-        ],
-        [
-            {
                 "id": "MAGICC12",
                 "title": "Magic",
                 "price": 65,
@@ -72,9 +12,14 @@
                 "title": "Diablo",
                 "price": 23,
                 "available": true
+            },
+            {
+                "id": "FIFAAA12",
+                "title": "Fifa",
+                "price": 12,
+                "available": true
             }
         ],
-        [],
         [
             {
                 "id": "MARIOK45",
@@ -95,14 +40,31 @@
                 "available": true
             }
         ],
-        [],
         [
+            {
+                "id": "FROGGR33",
+                "title": "frogger",
+                "price": 60,
+                "available": true
+            },
+            {
+                "id": "SPACEI27",
+                "title": "Spaceinv",
+                "price": 89,
+                "available": true
+            },
             {
                 "id": "MARIOB67",
                 "title": "MarioBros",
                 "price": 64,
                 "available": true
-            },
+            }
+        ],
+        [],
+        [],
+        [],
+        [],
+        [
             {
                 "id": "SONICC02",
                 "title": "Sonic",
@@ -113,6 +75,12 @@
                 "id": "DOMINO34",
                 "title": "Domino",
                 "price": 8,
+                "available": true
+            },
+            {
+                "id": "DRAGON45",
+                "title": "DragnQuest",
+                "price": 76,
                 "available": true
             }
         ],
@@ -132,34 +100,6 @@
         ]
     ],
     "index_table": [
-        [
-            "3",
-            "asdasd34"
-        ],
-        [
-            "hu",
-            "averdc77"
-        ],
-        [
-            "p",
-            "pppppp66"
-        ],
-        [
-            "pp",
-            "pppppp11"
-        ],
-        [
-            "p2",
-            "pppppp22"
-        ],
-        [
-            "p9",
-            "pppppp99"
-        ],
-        [
-            "p0",
-            "pppppp00"
-        ],
         [
             "frogger",
             "FROGGR33"
@@ -207,6 +147,14 @@
         [
             "Diablo",
             "DIABLO89"
+        ],
+        [
+            "DragnQuest",
+            "DRAGON45"
+        ],
+        [
+            "Fifa",
+            "FIFAAA12"
         ]
     ]
 }
