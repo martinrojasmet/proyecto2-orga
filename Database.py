@@ -68,6 +68,7 @@ class Database:
         result = False
         if len(self.matrix[address]) > 0:
             for i in range(0,len(self.matrix[address])):
+                print(self.matrix[address][i].id)
                 if self.matrix[address][i].id == game_id:
                     result = True
         return result

@@ -1,1 +1,1 @@
-{"matrix": [[{"id": "aaaaaa45", "title": "space", "price": 45, "available": true}], [], [], [], [], [], [], [], []], "index_table": [["space", "aaaaaa45"]]}
+{"matrix": [[], [], [{"id": "testxx67", "title": "test", "price": 77, "available": true}], [], [], [], [], [], []], "index_table": [["test", "testxx67"]]}
