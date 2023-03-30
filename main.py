@@ -56,7 +56,7 @@ class main:
 
             elif option == "2":
                 game_title = input("Ingrese el título del juego: ")
-                database.delete_game_by_title(game_title)(game_title)
+                database.delete_game_by_title(game_title)
 
             elif option == "3":
                 game_title = input("Ingrese el título del juego: ")

@@ -221,6 +221,26 @@ class Database:
         else:
             print("El juego no existe")
 
+    def move_overflow(self, address):
+        if address == 0:
+            for i in range(3,5):
+                if len(self.matrix[i]) > 0:
+                    self.matrix[address].append(self.matrix[i][0])
+                    self.matrix[i].pop(0)
+                    break
+        elif address == 1:
+            for i in range(5,7):
+                if len(self.matrix[i]) > 0:
+                    self.matrix[address].append(self.matrix[i][0])
+                    self.matrix[i].pop(0)
+                    break
+        else:
+            for i in range(7,9):
+                if len(self.matrix[i]) > 0:
+                    self.matrix[address].append(self.matrix[i][0])
+                    self.matrix[i].pop(0)
+                    break
+
     def delete_game_by_id(self, game_id):
         address = self.hash_function(game_id)
         game_is_in = self.game_in_group(game_id, address)
@@ -234,6 +254,7 @@ class Database:
                 for i in range(0,len(self.matrix[address])):
                     if self.matrix[address][i].id == game_id:
                         self.matrix[address].pop(i)
+                        self.move_overflow(address)
             else:
                 if address == 0:
                     for i in range(3,5):
