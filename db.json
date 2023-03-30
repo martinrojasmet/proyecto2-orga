@@ -46,14 +46,90 @@
                 "title": "pp",
                 "price": 5,
                 "available": true
+            },
+            {
+                "id": "FROGGR33",
+                "title": "frogger",
+                "price": 60,
+                "available": true
+            },
+            {
+                "id": "SPACEI27",
+                "title": "Spaceinv",
+                "price": 89,
+                "available": true
+            }
+        ],
+        [
+            {
+                "id": "MAGICC12",
+                "title": "Magic",
+                "price": 65,
+                "available": true
+            },
+            {
+                "id": "DIABLO89",
+                "title": "Diablo",
+                "price": 23,
+                "available": true
             }
         ],
         [],
+        [
+            {
+                "id": "MARIOK45",
+                "title": "Mario Kart",
+                "price": 67,
+                "available": true
+            },
+            {
+                "id": "YUGIOH66",
+                "title": "YugiOh",
+                "price": 23,
+                "available": true
+            },
+            {
+                "id": "TITANS56",
+                "title": "Titans",
+                "price": 65,
+                "available": true
+            }
+        ],
         [],
-        [],
-        [],
-        [],
-        []
+        [
+            {
+                "id": "MARIOB67",
+                "title": "MarioBros",
+                "price": 64,
+                "available": true
+            },
+            {
+                "id": "SONICC02",
+                "title": "Sonic",
+                "price": 48,
+                "available": true
+            },
+            {
+                "id": "DOMINO34",
+                "title": "Domino",
+                "price": 8,
+                "available": true
+            }
+        ],
+        [
+            {
+                "id": "SOLITA40",
+                "title": "Solitario",
+                "price": 9,
+                "available": true
+            },
+            {
+                "id": "DOOMMM64",
+                "title": "Doom",
+                "price": 89,
+                "available": true
+            }
+        ]
     ],
     "index_table": [
         [
@@ -83,6 +159,54 @@
         [
             "p0",
             "pppppp00"
+        ],
+        [
+            "frogger",
+            "FROGGR33"
+        ],
+        [
+            "Spaceinv",
+            "SPACEI27"
+        ],
+        [
+            "MarioBros",
+            "MARIOB67"
+        ],
+        [
+            "Mario Kart",
+            "MARIOK45"
+        ],
+        [
+            "YugiOh",
+            "YUGIOH66"
+        ],
+        [
+            "Magic",
+            "MAGICC12"
+        ],
+        [
+            "Sonic",
+            "SONICC02"
+        ],
+        [
+            "Titans",
+            "TITANS56"
+        ],
+        [
+            "Domino",
+            "DOMINO34"
+        ],
+        [
+            "Solitario",
+            "SOLITA40"
+        ],
+        [
+            "Doom",
+            "DOOMMM64"
+        ],
+        [
+            "Diablo",
+            "DIABLO89"
         ]
     ]
 }
