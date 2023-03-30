@@ -40,7 +40,7 @@ class Database:
                 if not game_in_group:
                     if not game_in_index_table:
                         self.matrix[new_address].append(game)
-                        self.index_table.append([game.title, game.id])
+                        self.binary_insert([game.title, game.id])
                         print("""
                         Juego agregado con éxito
                         """)
@@ -52,13 +52,6 @@ class Database:
             else:
                 print("No hay espacio en la base de datos")
 
-    def hash_function(self, string): #funcionando bien
-        key = 0
-        for c in string:
-            key += ord(c)
-        key = key % 3
-        return key
-    
     def binary_search_table(self, name):
         found = False
         low = 0
@@ -76,21 +69,22 @@ class Database:
         return result
     
     def binary_insert(self, array):
-        found = False
         low = 0
         high = len(self.index_table) - 1
-        while low <= high and not found:
+        while low <= high:
             mid = (low + high) // 2
-            if self.index_table[mid][0] > array[0]:
-                high = mid - 1
-            elif self.index_table[mid][0] < array[0]:
+            if self.index_table[mid][0] < array[0]:
                 low = mid + 1
-            elif self.index_table[mid][0] == array[0]:
-                found = True
-                break
             else:
-                self.index_table.insert(mid, array)
-        if found: print("El juego ya existe (titulo)")
+                high = mid - 1
+        self.index_table.insert(low, array)
+        
+    def hash_function(self, string): #funcionando bien
+        key = 0
+        for c in string:
+            key += ord(c)
+        key = key % 3
+        return key
 
     def first_table_full(self, address): #funcionando bien
         result = False
@@ -143,9 +137,9 @@ class Database:
     def game_in_index_table(self, game_title): #funcionando bien
         result = False
         if len(self.index_table) > 0:
-            for i in range(0,len(self.index_table)):
-                if self.index_table[i][0] == game_title:
-                    result = True
+            aux = self.binary_search_table(game_title)
+            if aux != None:
+                result = True
         return result
 
     def check_empty_group(self, original_address): #funcionando bien

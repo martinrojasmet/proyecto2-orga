@@ -34,9 +34,9 @@
                 "available": true
             },
             {
-                "id": "TITANS56",
-                "title": "Titans",
-                "price": 65,
+                "id": "TURBOS65",
+                "title": "TurboRace",
+                "price": 45,
                 "available": true
             }
         ],
@@ -60,9 +60,23 @@
                 "available": true
             }
         ],
+        [
+            {
+                "id": "ULTRAM44",
+                "title": "Ultraman54",
+                "price": 3,
+                "available": true
+            }
+        ],
         [],
-        [],
-        [],
+        [
+            {
+                "id": "METEOR60",
+                "title": "Meteor",
+                "price": 34,
+                "available": true
+            }
+        ],
         [],
         [
             {
@@ -72,15 +86,15 @@
                 "available": true
             },
             {
-                "id": "DOMINO34",
-                "title": "Domino",
-                "price": 8,
-                "available": true
-            },
-            {
                 "id": "DRAGON45",
                 "title": "DragnQuest",
                 "price": 76,
+                "available": true
+            },
+            {
+                "id": "TELEPO37",
+                "title": "Teleport",
+                "price": 1,
                 "available": true
             }
         ],
@@ -103,10 +117,6 @@
         [
             "Diablo",
             "DIABLO89"
-        ],
-        [
-            "Domino",
-            "DOMINO34"
         ],
         [
             "Doom",
@@ -133,6 +143,10 @@
             "MARIOB67"
         ],
         [
+            "Meteor",
+            "METEOR60"
+        ],
+        [
             "Solitario",
             "SOLITA40"
         ],
@@ -145,8 +159,12 @@
             "SPACEI27"
         ],
         [
-            "Titans",
-            "TITANS56"
+            "TurboRace",
+            "TURBOS65"
+        ],
+        [
+            "Ultraman54",
+            "ULTRAM44"
         ],
         [
             "YugiOh",
