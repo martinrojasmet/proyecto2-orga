@@ -92,6 +92,7 @@ class Database:
                     new_address += 1
             
         else:
+            print("hola")
             result = self.game_is_in_table(game_id, address)
             if (not result):
                 new_address = 3
@@ -180,6 +181,7 @@ class Database:
         address = self.hash_function(game_id)
         result = None
         game_is_in = self.game_in_group(game_id, address)
+        print(game_is_in)
 
         if game_is_in:
             if not self.group_is_full(address):
@@ -213,14 +215,14 @@ class Database:
         if game != None:
             game.set_available()
         else:
-            print("El juego no existe")
+            print("El juego no existep")
 
     def rent_game(self, game_id): #funcionando bien
         game = self.get_game_by_id(game_id)
-        if game != None:
-            game.set_not_available()
-        else:
+        if game == None:
             print("El juego no existe")
+        else:
+            game.set_not_available()
 
     def move_overflow(self, address):
         if address == 0:
@@ -289,8 +291,12 @@ class Database:
 
     def save_db_json(self):
         for i in range(0,len(self.matrix)):
-            for j in range(0,len(self.matrix[i])):
-                self.matrix[i][j] = self.matrix[i][j].to_dict()
+            print("primero",i)
+            if len(self.matrix[i]) > 0:
+                for j in range(0,len(self.matrix[i])):
+                    print("segundo", j)
+                    va = self.matrix[i][j]
+                    self.matrix[i][j] = va.dict()
         dict = {"matrix": self.matrix, "index_table": self.index_table}
         with open("db.json", "w") as file:
             json.dump(dict, file)

@@ -30,6 +30,7 @@ class Game:
         }
     
     def print_attributes(self):
+        print("")
         print("Atributos del juego: ")
         print("Modelo: ", self.id)
         print("Título: ", self.title)

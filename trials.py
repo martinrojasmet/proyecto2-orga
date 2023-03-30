@@ -6,8 +6,8 @@ class trials:
     def run(self):
         database = Database()
 
-        game = Game("MARIO1", "Mario", 100)
-        print(database.check_empty_group(2))
+        game = Game("GTGTGT56", "Mario", 100)
+        print(database.hash_function(game.id))
 
 t = trials()
 t.run()
