@@ -250,30 +250,35 @@ class Database:
             for i in range(0,len(self.index_table)):
                 if self.index_table[i][1] == game_id:
                     self.index_table.pop(i)
+                    break
 
             if self.game_is_in_table(game_id, address):
                 for i in range(0,len(self.matrix[address])):
                     if self.matrix[address][i].id == game_id:
                         self.matrix[address].pop(i)
                         self.move_overflow(address)
+                        break
             else:
                 if address == 0:
                     for i in range(3,5):
                         for j in range(0,len(self.matrix[i])):
                             if self.matrix[i][j].id == game_id:
                                 self.matrix[i].pop(j)
+                                break
 
                 elif address == 1:
                     for i in range(5,7):
                         for j in range(0,len(self.matrix[i])):
                             if self.matrix[i][j].id == game_id:
                                 self.matrix[i].pop(j)
+                                break
 
                 else:
                     for i in range(7,9):
                         for j in range(0,len(self.matrix[i])):
                             if self.matrix[i][j].id == game_id:
                                 self.matrix[i].pop(j)
+                                break
 
         else:
             print("El juego no existe")
@@ -284,6 +289,7 @@ class Database:
             if self.index_table[i][0] == game_title:
                 self.delete_game_by_id(self.index_table[i][1])
                 found = True
+                break
         if not found:
             print("El juego no existe")
 

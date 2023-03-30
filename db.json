@@ -8,15 +8,15 @@
                 "available": true
             },
             {
-                "id": "pppppp33",
-                "title": "p3",
-                "price": 6,
-                "available": true
-            },
-            {
                 "id": "pppppp99",
                 "title": "p9",
                 "price": 5,
+                "available": true
+            },
+            {
+                "id": "pppppp00",
+                "title": "p0",
+                "price": 8,
                 "available": true
             }
         ],
@@ -48,14 +48,7 @@
                 "available": true
             }
         ],
-        [
-            {
-                "id": "pppppp00",
-                "title": "p0",
-                "price": 8,
-                "available": true
-            }
-        ],
+        [],
         [],
         [],
         [],
@@ -82,10 +75,6 @@
         [
             "p2",
             "pppppp22"
-        ],
-        [
-            "p3",
-            "pppppp33"
         ],
         [
             "p9",

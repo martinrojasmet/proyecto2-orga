@@ -7,7 +7,7 @@ class main:
     def run(self):
         database = Database()
         keepGoing = True
-        
+
         if os.stat("db.json").st_size != 0:
                 database.load_db_json()
 
@@ -32,7 +32,7 @@ class main:
                 #validar que el modelo sea de 6 letras y 2 numeros
                 game_id = input("Ingrese el modelo del juego: ")
 
-                while (re.match(r"^[a-zA-Z]{6}[0-9]{2}$", game_id) == None):
+                while (re.match(r"^[A-Z]{6}[0-9]{2}$", game_id) == None):
                     print("El modelo no es válido, por favor ingrese 6 letras y 2 numeros")
                     game_id = input("Ingrese el modelo del juego: ")
 
