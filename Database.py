@@ -35,7 +35,7 @@ class Database:
             else:
                 print("El juego ya existe (modelo)")
         else:
-            new_address = self.check_empty_group()
+            new_address = self.check_empty_group(address)
             if new_address != 10:
                 if not game_in_group:
                     if not game_in_index_table:
@@ -44,7 +44,7 @@ class Database:
                         print("""
                         Juego agregado con éxito
                         """)
-                        
+
                     else:
                         print("El juego ya existe (titulo)")
                 else:
@@ -293,12 +293,12 @@ class Database:
                 self.matrix[i][j] = self.matrix[i][j].to_dict()
         dict = {"matrix": self.matrix, "index_table": self.index_table}
         with open("db.json", "w") as file:
-            json.dump(dict, file)
+            json.dump(dict, file, indent=4)
 
     def erase_db_json(self):
         dict = {}
         with open("db.json", "w") as file:
-            json.dump(dict, file)
+            json.dump(dict, file, indent=4)
 
     def erase_db(self):
         self.matrix = [[],[],[],[],[],[],[],[],[]]
