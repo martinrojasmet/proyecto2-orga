@@ -4,19 +4,6 @@ import os
 import re
 class main:
 
-    def validate_game_att(self, game):  #revisar
-        valid_game = True
-        if not (re.match(r"^[A-Z]{4}[0-9]{2}$", game.id) != game.id):
-            print("El modulo no es válido")
-            valid_game = False
-        if  len(game.title) > 10:
-            print("El título no es válido")
-            valid_game = False
-        if (game.price > 999) and (not isinstance(game.price, int)):
-            print("El precio no es válido")
-            valid_game = False
-        return valid_game
-
     def run(self):
         database = Database()
         keepGoing = True
@@ -41,13 +28,31 @@ class main:
             option = input("Ingrese el nro. de la opción que desee: ")
 
             if option == "1":
+                #validar que el modelo sea de 6 letras y 2 numeros
                 game_id = input("Ingrese el modelo del juego: ")
+
+                while (re.match(r"^[a-zA-Z]{6}[0-9]{2}$", game_id) == None):
+                    print("El modelo no es válido, por favor ingrese 6 letras y 2 numeros")
+                    game_id = input("Ingrese el modelo del juego: ")
+
+                #validar que el titulo sea de maximo 10 caracteres
                 game_title = input("Ingrese el título del juego: ")
+
+                while (len(game_title) > 10):
+                    print("El título no es válido, por favor ingrese un título de máximo 10 caracteres")
+                    game_title = input("Ingrese el título del juego: ")
+
+                #validar que el precio sea un numero de maximo 3 digitos
                 game_price = input("Ingrese el precio del juego: ")
+
+                while (not game_price.isnumeric()) or (int(game_price) > 999):
+                    print("El precio no es válido, por favor ingrese un número de máximo 3 dígitos")
+                    game_price = input("Ingrese el precio del juego: ")
+
                 game_price = int(game_price)
                 new_game = Game(game_id, game_title, game_price)
-                if self.validate_game_att(new_game):
-                    database.add_game(new_game)
+                
+                database.add_game(new_game)
 
             elif option == "2":
                 game_title = input("Ingrese el título del juego: ")
