@@ -4,10 +4,10 @@ import os
 import re
 class main:
 
-    def validate_game_att(self, game):
+    def validate_game_att(self, game):  #revisar
         valid_game = True
-        if not (re.match(r"^[a-zA-Z]{4}[0-9]{2}$", game.id) != game.id):
-            print("El id no es válido")
+        if not (re.match(r"^[A-Z]{4}[0-9]{2}$", game.id) != game.id):
+            print("El modulo no es válido")
             valid_game = False
         if  len(game.title) > 10:
             print("El título no es válido")
@@ -41,7 +41,7 @@ class main:
             option = input("Ingrese el nro. de la opción que desee: ")
 
             if option == "1":
-                game_id = input("Ingrese el id del juego: ")
+                game_id = input("Ingrese el modelo del juego: ")
                 game_title = input("Ingrese el título del juego: ")
                 game_price = input("Ingrese el precio del juego: ")
                 game_price = int(game_price)
@@ -55,21 +55,32 @@ class main:
 
             elif option == "3":
                 game_title = input("Ingrese el título del juego: ")
-                database.rent_game(get_game_id_by_title(game_title))
+                if database.get_game_id_by_title(game_title) == None:
+                    print("No se encontró el juego")
+                else:
+                    database.rent_game(database.get_game_id_by_title(game_title))
+                    print("El juego se ha alquilado exitosamente")
             
             elif option == "4":
                 game_title = input("Ingrese el título del juego: ")
-                database.return_game(get_game_id_by_title(game_title))
+                if database.get_game_id_by_title(game_title) == None:
+                    print("No se encontró el juego")
+                else:
+                    database.return_game(database.get_game_id_by_title(game_title))
+                    print("El juego se ha devuelto exitosamente")
             
             elif option == "5":
-                game_id = input("Ingrese el id del juego: ")
+                game_id = input("Ingrese el modelo del juego: ")
                 game = database.get_game_by_id(game_id)
                 game.print_attributes()
             
             elif option == "6":
                 game_title = input("Ingrese el título del juego: ")
                 game = database.get_game_by_title(game_title)
-                game.print_attributes()
+                if game == None:
+                    print("No se encontró el juego")
+                else:
+                    game.print_attributes()
 
             elif option == "7":
                 database.erase_db()
@@ -78,6 +89,7 @@ class main:
                 database.save_db_json()
                 print("Gracias por usar Rent-A-Game Caracas. Vuelva pronto")
                 keepGoing = False
+        
             
 
 main = main()

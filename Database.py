@@ -26,17 +26,23 @@ class Database:
                 if not game_in_index_table:
                     self.matrix[address].append(game)
                     self.index_table.append([game.title, game.id])
+                    print("""
+                    Juego agregado con éxito
+                    """)
                 else:
                     print("El juego ya existe (titulo)")
             else:
                 print("El juego ya existe (modelo)")
         else:
-            new_address = check_empty_register()
+            new_address = self.check_empty_group()
             if new_address != 10:
                 if not game_in_group:
                     if not game_in_index_table:
                         self.matrix[new_address].append(game)
                         self.index_table.append([game.title, game.id])
+                        print("""
+                        Juego agregado con éxito
+                        """)
                     else:
                         print("El juego ya existe (titulo)")
                 else:
@@ -44,100 +50,104 @@ class Database:
             else:
                 print("No hay espacio en la base de datos")
 
-    def hash_function(self, string):
+    def hash_function(self, string): #funcionando bien
         key = 0
         for c in string:
             key += ord(c)
         key = key % 3
         return key
 
-    def first_table_full(self, address):
+    def first_table_full(self, address): #funcionando bien
         result = False
         if len(self.matrix[address] == 3):
             result = True
         return result
 
-    def game_is_in_table(self, game_id, address):
+    def game_is_in_table(self, game_id, address): #funcionando bien
         result = False
-        for i in range(0,len(self.matrix[address])):
-            if self.matrix[address][i].id == game_id:
-                result = True
+        if len(self.matrix[address]) > 0:
+            for i in range(0,len(self.matrix[address])):
+                if self.matrix[address][i].id == game_id:
+                    result = True
         return result
 
-    def game_in_group(self, game_id, address):
+    def game_in_group(self, game_id, address): #funcionando bien
         result = False
-        if (address == 1):
+        if (address == 0):
             result = self.game_is_in_table(game_id, address)
             if (not result):
                 new_address = 3
-                while (not result) and (address < 5):
+                while (not result) and (new_address < 5):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
          
-        elif (address == 2):
+        elif (address == 1):
             result = self.game_is_in_table(game_id, address)
             if (not result):
-                new_address = 5
-                while (not result) and (address < 7):
+                new_address = 3
+                while (not result) and (new_address < 7):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
             
         else:
             result = self.game_is_in_table(game_id, address)
             if (not result):
-                new_address = 7
-                while (not result) and (address < 9):
+                new_address = 3
+                while (not result) and (new_address < 9):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
 
         return result
 
-    def group_is_full(self, address):
+    def group_is_full(self, address): #funcionando bien
         result = False
         if len(self.matrix[address]) == 3:
             result = True
         return result
 
-    def game_in_index_table(self, game_title):
+    def game_in_index_table(self, game_title): #funcionando bien
         result = False
-        for i in range(0,len(self.index_table)):
-            if self.index_table[i][0] == game_title:
-                result = True
+        if len(self.index_table) > 0:
+            for i in range(0,len(self.index_table)):
+                if self.index_table[i][0] == game_title:
+                    result = True
         return result
 
-    def check_empty_register(self, original_address):
+    def check_empty_group(self, original_address): #funcionando bien
         result = 10
 
         if original_address == 0:
             for i in range(3,5):
                 if len(self.matrix[i]) < 3:
                     result = i
+                    break
 
         elif original_address == 1:
             for i in range(5,7):
                 if len(self.matrix[i]) < 3:
                     result = i
+                    break
 
         else:
             for i in range(7,9):
                 if len(self.matrix[i]) < 3:
                     result = i
+                    break
 
         return result
 
-    def address_game_by_title(self, game_title):
+    def address_game_by_title(self, game_title): #funcionando bien
         result = 10
-        for i in range(0,len(self.index_table)):
-            if self.index_table[i][0] == game_title:
-                result = self.hash_function(self.index_table[i][1])
+        if len(self.index_table) > 0:
+            for i in range(0,len(self.index_table)):
+                if self.index_table[i][0] == game_title:
+                    result = self.hash_function(self.index_table[i][1])
         return result
 
-    def get_game_by_title(self, game_title):
+    def get_game_by_title(self, game_title): #funcionando bien
         address = self.address_game_by_title(game_title)
         result = None
-        if address == 10:
-            print("El juego no existe")
-        else:
+        if address != 10:
             if not self.group_is_full(address):
                 for i in range(0,len(self.matrix[address])):
                     if self.matrix[address][i].title == game_title:
@@ -164,7 +174,7 @@ class Database:
                                     result = self.matrix[i][j]    
         return result
 
-    def get_game_by_id(self, game_id):
+    def get_game_by_id(self, game_id): #funcionando bien
         address = self.hash_function(game_id)
         result = None
         game_is_in = self.game_in_group(game_id, address)
@@ -196,14 +206,14 @@ class Database:
                                     result = self.matrix[i][j]
         return result
 
-    def return_game(self, game_id):
+    def return_game(self, game_id): #funcionando bien
         game = self.get_game_by_id(game_id)
         if game != None:
             game.set_available()
         else:
             print("El juego no existe")
 
-    def rent_game(self, game_id):
+    def rent_game(self, game_id): #funcionando bien
         game = self.get_game_by_id(game_id)
         if game != None:
             game.set_not_available()
@@ -269,18 +279,16 @@ class Database:
         self.index_table = []
         self.erase_db_json()
 
-    def get_id_by_title():
-        result = None
-        found = False
-        for i in range(0,len(self.index_table)):
-            if self.index_table[i][0] == game_title:
-                found = True
-        if found:
-            result = self.index_table[i][1]
-        return result
-
     def load_db_json(self):
         with open("db.json", "r") as file:
             dict = json.load(file)
             self.matrix = dict["matrix"]
             self.index_table = dict["index_table"]
+
+    def get_game_id_by_title(self, game_title): #funcionando bien
+        result = None
+        if len(self.index_table) > 0:
+            for i in range(0,len(self.index_table)):
+                if self.index_table[i][0] == game_title:
+                    result = self.index_table[i][1]
+        return result

@@ -16,15 +16,15 @@ class Game:
         self.price = price
 
     def print_availability(self):
-        if self.get_available():
+        if self.available:
             print("En stock")
         else:
             print("Alquilado")
     
     def print_attributes(self):
         print("Atributos del juego: ")
-        print("ID: ", self.id)
+        print("Modelo: ", self.id)
         print("Título: ", self.title)
         print("Precio: ", self.price)
-        print("Disponibilidad: ", self.print_availability())
+        self.print_availability()
         print("")
