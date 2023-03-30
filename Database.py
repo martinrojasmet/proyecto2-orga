@@ -75,29 +75,12 @@ class Database:
 
     def game_in_group(self, game_id, address): #funcionando bien
         result = False
-        if (address == 0):
-            result = self.game_is_in_table(game_id, address)
-            if (not result):
-                new_address = 3
-                while ((not result) and (new_address < 5)):
-                    result = self.game_is_in_table(game_id, new_address)
-                    new_address += 1
-         
-        elif (address == 1):
-            result = self.game_is_in_table(game_id, address)
-            if (not result):
-                new_address = 5
-                while ((not result) and (new_address < 7)):
-                    result = self.game_is_in_table(game_id, new_address)
-                    new_address += 1
-            
-        else:
-            result = self.game_is_in_table(game_id, address)
-            if (not result):
-                new_address = 7
-                while ((not result) and (new_address < 9)):
-                    result = self.game_is_in_table(game_id, new_address)
-                    new_address += 1
+        result = self.game_is_in_table(game_id, address)
+        if (not result):
+            new_address = 3
+            while ((not result) and (new_address < 9)):
+                result = self.game_is_in_table(game_id, new_address)
+                new_address += 1
 
         return result
 
@@ -118,23 +101,10 @@ class Database:
     def check_empty_group(self, original_address): #funcionando bien
         result = 10
 
-        if original_address == 0:
-            for i in range(3,5):
-                if len(self.matrix[i]) < 3:
-                    result = i
-                    break
-
-        elif original_address == 1:
-            for i in range(5,7):
-                if len(self.matrix[i]) < 3:
-                    result = i
-                    break
-
-        else:
-            for i in range(7,9):
-                if len(self.matrix[i]) < 3:
-                    result = i
-                    break
+        for i in range(3,9):
+            if len(self.matrix[i]) < 3:
+                result = i
+                break
 
         return result
 
@@ -159,21 +129,10 @@ class Database:
                     if self.matrix[address][i].title == game_title:
                         result = self.matrix[address][i]
                 if result == None:
-                    if address == 0:
-                        for i in range(3,5):
-                            for j in range(0,len(self.matrix[i])):
-                                if self.matrix[i][j].title == game_title:
-                                    result = self.matrix[i][j]
-                    elif address == 1:
-                        for i in range(5,7):
-                            for j in range(0,len(self.matrix[i])):
-                                if self.matrix[i][j].title == game_title:
-                                    result = self.matrix[i][j]
-                    else:
-                        for i in range(7,9):
-                            for j in range(0,len(self.matrix[i])):
-                                if self.matrix[i][j].title == game_title:
-                                    result = self.matrix[i][j]  
+                    for i in range(3,5):
+                        for j in range(0,len(self.matrix[i])):
+                            if self.matrix[i][j].title == game_title:
+                                result = self.matrix[i][j]
         return result
 
     def get_game_by_id(self, game_id): #funcionando bien
@@ -192,17 +151,7 @@ class Database:
                         result = self.matrix[address][i]
                 if result == None:
                     if address == 0:
-                        for i in range(3,5):
-                            for j in range(0,len(self.matrix[i])):
-                                if self.matrix[i][j].id == game_id:
-                                    result = self.matrix[i][j]
-                    elif address == 1:
-                        for i in range(5,7):
-                            for j in range(0,len(self.matrix[i])):
-                                if self.matrix[i][j].id == game_id:
-                                    result = self.matrix[i][j]
-                    else:
-                        for i in range(7,9):
+                        for i in range(3,9):
                             for j in range(0,len(self.matrix[i])):
                                 if self.matrix[i][j].id == game_id:
                                     result = self.matrix[i][j]
@@ -223,24 +172,11 @@ class Database:
             print("El juego no existe")
 
     def move_overflow(self, address):
-        if address == 0:
-            for i in range(3,5):
-                if len(self.matrix[i]) > 0:
-                    self.matrix[address].append(self.matrix[i][0])
-                    self.matrix[i].pop(0)
-                    break
-        elif address == 1:
-            for i in range(5,7):
-                if len(self.matrix[i]) > 0:
-                    self.matrix[address].append(self.matrix[i][0])
-                    self.matrix[i].pop(0)
-                    break
-        else:
-            for i in range(7,9):
-                if len(self.matrix[i]) > 0:
-                    self.matrix[address].append(self.matrix[i][0])
-                    self.matrix[i].pop(0)
-                    break
+        for i in range(3,9):
+            if len(self.matrix[i]) > 0:
+                self.matrix[address].append(self.matrix[i][0])
+                self.matrix[i].pop(0)
+                break
 
     def delete_game_by_id(self, game_id):
         address = self.hash_function(game_id)
@@ -259,26 +195,11 @@ class Database:
                         self.move_overflow(address)
                         break
             else:
-                if address == 0:
-                    for i in range(3,5):
-                        for j in range(0,len(self.matrix[i])):
-                            if self.matrix[i][j].id == game_id:
-                                self.matrix[i].pop(j)
-                                break
-
-                elif address == 1:
-                    for i in range(5,7):
-                        for j in range(0,len(self.matrix[i])):
-                            if self.matrix[i][j].id == game_id:
-                                self.matrix[i].pop(j)
-                                break
-
-                else:
-                    for i in range(7,9):
-                        for j in range(0,len(self.matrix[i])):
-                            if self.matrix[i][j].id == game_id:
-                                self.matrix[i].pop(j)
-                                break
+                for i in range(3,5):
+                    for j in range(0,len(self.matrix[i])):
+                        if self.matrix[i][j].id == game_id:
+                            self.matrix[i].pop(j)
+                            break
 
         else:
             print("El juego no existe")
