@@ -44,6 +44,7 @@ class Database:
                         print("""
                         Juego agregado con éxito
                         """)
+                        
                     else:
                         print("El juego ya existe (titulo)")
                 else:
@@ -78,23 +79,23 @@ class Database:
             result = self.game_is_in_table(game_id, address)
             if (not result):
                 new_address = 3
-                while (not result) and (new_address < 5):
+                while ((not result) and (new_address < 5)):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
          
         elif (address == 1):
             result = self.game_is_in_table(game_id, address)
             if (not result):
-                new_address = 3
-                while (not result) and (new_address < 7):
+                new_address = 5
+                while ((not result) and (new_address < 7)):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
             
         else:
             result = self.game_is_in_table(game_id, address)
             if (not result):
-                new_address = 3
-                while (not result) and (new_address < 9):
+                new_address = 7
+                while ((not result) and (new_address < 9)):
                     result = self.game_is_in_table(game_id, new_address)
                     new_address += 1
 
@@ -137,7 +138,7 @@ class Database:
 
         return result
 
-    def address_game_by_title(self, game_title): #funcionando bien
+    def address_game_by_title(self, game_title): #funcionando bien - jd
         result = 10
         if len(self.index_table) > 0:
             for i in range(0,len(self.index_table)):
@@ -172,7 +173,7 @@ class Database:
                         for i in range(7,9):
                             for j in range(0,len(self.matrix[i])):
                                 if self.matrix[i][j].title == game_title:
-                                    result = self.matrix[i][j]    
+                                    result = self.matrix[i][j]  
         return result
 
     def get_game_by_id(self, game_id): #funcionando bien
