@@ -77,7 +77,10 @@ class main:
             elif option == "5":
                 game_id = input("Ingrese el modelo del juego: ")
                 game = database.get_game_by_id(game_id)
-                game.print_attributes()
+                if game != None:
+                    game.print_attributes()
+                else:
+                    print("No se encontró el juego")
             
             elif option == "6":
                 game_title = input("Ingrese el título del juego: ")
